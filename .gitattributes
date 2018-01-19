@@ -1,0 +1,4 @@
+*.sh linguist-language=go
+*.jpg linguist-language=go
+*.go linguist-language=go
+*.md linguist-language=go
