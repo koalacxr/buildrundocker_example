@@ -1,8 +1,6 @@
 # 编译并运行一个比较小的 golang Docker Image [![Build Status](https://travis-ci.org/kevingo/Go-Small-Docker-Image.svg?branch=master)](https://travis-ci.org/kevingo/Go-Small-Docker-Image)
 
-# 使用Docker Mutil build
-
-# 第一步编写App项目
+## 第一步编写App项目
 package main
 
 import "fmt"
@@ -12,7 +10,7 @@ func main() {
 }
 
 
-# 第二步编写Dockerfile文件
+## 第二步编写Dockerfile文件
 FROM golang:alpine AS build-env
 ADD . /src
 RUN cd /src && go build -o goapp
@@ -22,7 +20,8 @@ WORKDIR /app
 COPY --from=build-env /src/goapp /app/
 ENTRYPOINT ./goapp
 
-# 第三步执行app_build_run.sh脚本， 大部分项目只要修改app_build_run.sh脚本中imagename变量就行了
+## 第三步执行app_build_run.sh脚本
+### 大部分项目只要修改app_build_run.sh脚本中imagename变量就行了
 imagename="kevin/hello"
 
 docker build -t ${imagename} .
