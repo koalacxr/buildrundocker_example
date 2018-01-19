@@ -41,4 +41,4 @@ echo "Application running:"
 docker run -ti --rm ${imagename}
 
 #看执行结果
-![image](https://github.com/koalacxr/buildrundocker_example/demo.jpg)
+![image](https://github.com/koalacxr/buildrundocker_example/blob/master/demo.jpg)
