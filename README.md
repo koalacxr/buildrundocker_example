@@ -13,18 +13,16 @@ func main() {
 
 
 #第二步编写Dockerfile文件
-# build stage
 FROM golang:alpine AS build-env
 ADD . /src
 RUN cd /src && go build -o goapp
 
-# final stage
 FROM alpine
 WORKDIR /app
 COPY --from=build-env /src/goapp /app/
 ENTRYPOINT ./goapp
 
-#第三步执行app_build_run.sh脚本
+#第三步执行app_build_run.sh脚本， 大部分项目只要修改app_build_run.sh脚本中imagename变量就行了
 imagename="kevin/hello"
 
 docker build -t ${imagename} .
@@ -40,5 +38,5 @@ echo "#################################Running......############################
 echo "Application running:"
 docker run -ti --rm ${imagename}
 
-#看执行结果
+#执行结果如下，只有6MB, 不会大200多MB了
 ![image](https://github.com/koalacxr/buildrundocker_example/blob/master/demo.jpg)
